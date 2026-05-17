@@ -3,6 +3,7 @@ import { Ionicons } from '@expo/vector-icons';
 
 import ExploreScreen from '../screens/ExploreScreen';
 import ProfileScreen from '../screens/ProfileScreen';
+import { useTheme } from '../context/ThemeContext';
 
 const Tab = createBottomTabNavigator();
 
@@ -12,20 +13,22 @@ const SCREENS = {
 };
 
 export default function TabNavigator() {
+  const { colors } = useTheme();
+
   return (
     <Tab.Navigator
       initialRouteName={SCREENS.EXPLORE}
       screenOptions={({ route }) => ({
         headerShown: false,
         tabBarStyle: {
-          backgroundColor: '#080A18',
-          borderTopColor: '#171A2E',
+          backgroundColor: colors.cardAlt,
+          borderTopColor: colors.border,
           height: 76,
           paddingTop: 8,
           paddingBottom: 12,
         },
-        tabBarActiveTintColor: '#F4F4FF',
-        tabBarInactiveTintColor: '#7B819E',
+        tabBarActiveTintColor: colors.text,
+        tabBarInactiveTintColor: colors.muted,
         tabBarLabelStyle: {
           fontSize: 13,
           marginTop: 2,
